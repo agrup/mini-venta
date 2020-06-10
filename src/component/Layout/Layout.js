@@ -5,13 +5,14 @@ import {Container, Row, Col, Card, Form, Button } from "react-bootstrap";
 import { Router, Route, Switch } from "react-router";
 import { makeStyles, createStyles, Theme } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
-import Sidebar from './menu/Index';
+import Sidebar from './menu/menu';
 import NavBar from './nav/index';
 import Body from './Body' 
 
-import NewArticle from '../Article/NewArticle';
 import Articles from '../Article/Articles';
-import Clints from '../Clients/Client';
+import NewArticle from '../Article/NewArticle';
+import Clients from '../Client/Clients';
+import NewClient from '../Client/NewClient';
 
 
 import './../../style/Layout.css';
@@ -39,16 +40,16 @@ const Layout = props =>  {
    const [sidebarOpen,setSidebarOpen] = useState(false);
 
     const menu = [
-    {key:0, show:'Articulos',link:'/articulos'},
-    {key:1, show:'Vender',link:'/vender'},
-    {key:2, show:'Comprar',link:'/comprar'},
+    {key:0, show:'Articulos',link:'/articles'},
+    {key:1, show:'Vender',link:'/sell'},
+    {key:2, show:'Comprar',link:'/buy'},
     {key:3, show:'Stock',link:'/stock'},
-    {key:4, show:'Mensajes',link:'/mensajes'},
-    {key:5, show:'Pedidos',link:'/pedidos'},
-    {key:6, show:'Nuevo Articulo',link:'/new-article'},
-    {key:7, show:'Cliente',link:'/Cliente'},
-    {key:8, show:'Nuevo Cliente',link:'/new-client'},
-    {key:9, show:'Order',link:'/new-order'},
+    {key:4, show:'Mensajes',link:'/message'},
+    {key:5, show:'Pedidos',link:'/orders'},
+    {key:6, show:'Nuevo Articulo',link:'/article/add'},
+    {key:7, show:'Cliente',link:'/clients'},
+    {key:8, show:'Nuevo Cliente',link:'/client/add'},
+    {key:9, show:'Order',link:'/order/add'},
     {key:18, show:'Admin',link:'/admin'}
   ];
   const classes = useStyles();
@@ -65,9 +66,10 @@ const Layout = props =>  {
           </Col>
           <Col  xs={10} >
             <Paper className={classes.paper}>
-                <Route path="/pedidos" exact component={Clints} />
-                <Route path="/articulos" exact component={Articles} />
-                <Route path="/new-article" exact component={NewArticle} />
+                <Route path="/clients" exact component={Clients} />
+                <Route path="/articles" exact component={Articles} />
+                <Route path="/article/add" exact component={NewArticle} />
+                <Route path="/client/add" exact component={NewClient} />
               </Paper> 
             </Col>
         </Row>

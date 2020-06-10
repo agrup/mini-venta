@@ -1,8 +1,11 @@
 import React from 'react'
 import clsx from 'clsx';
+
+import {Link} from 'react-router-dom'
+
+// import AppBar from '@material-ui/core/AppBar';
 import { createStyles, makeStyles, useTheme, Theme } from '@material-ui/core/styles';
 import Drawer from '@material-ui/core/Drawer';
-// import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import List from '@material-ui/core/List';
 import CssBaseline from '@material-ui/core/CssBaseline';
@@ -78,7 +81,11 @@ const Sidebar = (props) => {
             {props.menu.map((menu, index) => (
                 <ListItem button key = {menu.key}>
                 <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
-                <ListItemText primary={menu.show} />
+                <Link  to = {menu.link} >
+                                        {/* {menu.show}                                          */}
+                    <ListItemText primary={menu.show} />
+                </Link>
+                {/* <ListItemText primary={menu.show} /> */}
                 </ListItem>
             ))}
             </List>
